@@ -6,17 +6,17 @@
 LEX_FILE := scanner.l
 YACC_FILE := cminus.y
 
-A.OUT := lex.yy.c y.tab.c symTable.c
+SOURCES := ${wildcard ./*.c}
 
-a.out: lex.yy.c y.tab.c symTable.c symTable.h
-	gcc ${A.OUT} -o $@
+a.out: lex.yy.c y.tab.c
+	gcc $^ ${SOURCES} -o $@
 
 # Flex file
-lex.yy.c: ${LEX_FILE} symTable.h
+lex.yy.c: ${LEX_FILE} 
 	flex ${LEX_FILE}
 
 # Yacc file
-y.tab.c: ${YACC_FILE} symTable.h
+y.tab.c: ${YACC_FILE}
 	yacc -d ${YACC_FILE}
 
 .PHONY: clean
