@@ -27,7 +27,6 @@ Node sym_ptr = NULL;
  */
 %union {
 	int ival;
-	//float fval;
 	char text[40];
 }
 

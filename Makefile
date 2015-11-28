@@ -9,7 +9,7 @@ YACC_FILE := cminus.y
 SOURCES := ${wildcard ./*.c}
 
 a.out: lex.yy.c y.tab.c
-	gcc $^ ${SOURCES} -o $@
+	gcc $^ -I.\*.h ${SOURCES} -o $@
 
 # Flex file
 lex.yy.c: ${LEX_FILE} 
